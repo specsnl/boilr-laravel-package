@@ -1,12 +1,8 @@
 {
     "PackageName": "Foobar",
-    "Vendor": "Ilyes512",
-    "Author": "Ilyes Ahidar",
+    "Vendor": "specsnl",
+    "Author": "Specsnl Team",
     "AddAssertLib": false,
     "AddSnapshotLib": false,
-    "PhpVersion": [
-        "8.4",
-        "8.3",
-        "8.2"
-    ]
+    "PhpVersion": ["8.4", "8.3", "8.2"]
 }
