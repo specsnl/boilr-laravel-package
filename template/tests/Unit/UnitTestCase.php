@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace {{ camelcase (snakecase Vendor) }}\{{ camelcase (snakecase PackageName) }}\Tests\Unit;
+namespace {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\Tests\Unit;
 
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use PHPUnit\Framework\TestCase as PHPUnitTestCase;
-{{- if AddSnapshotLib}}
+{{- if AddSnapshotLib }}
 use Spatie\Snapshots\MatchesSnapshots;
-{{- end}}
+{{- end }}
 
 abstract class UnitTestCase extends PHPUnitTestCase
 {
     use MockeryPHPUnitIntegration;
-    {{- if AddSnapshotLib}}
+    {{- if AddSnapshotLib }}
     use MatchesSnapshots;
 
     protected function assertSnapshotShouldBeCreated(string $snapshotFileName): void
@@ -27,5 +27,5 @@ abstract class UnitTestCase extends PHPUnitTestCase
             'Make sure to inspect the created snapshot afterwards to ensure its correctness!',
         );
     }
-    {{- end}}
+    {{- end }}
 }

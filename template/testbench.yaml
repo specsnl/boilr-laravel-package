@@ -1,5 +1,5 @@
 env: []
 providers:
   - Laravel\Tinker\TinkerServiceProvider
-  - {{ camelcase (snakecase Vendor) }}\{{ camelcase (snakecase PackageName) }}\{{ camelcase (snakecase PackageName) }}ServiceProvider
+  - {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\{{ toPascalCase PackageName }}ServiceProvider
 dont-discover: []

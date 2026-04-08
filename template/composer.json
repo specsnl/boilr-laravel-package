@@ -1,5 +1,5 @@
 {
-    "name": "{{ lower Vendor }}/laravel-{{ kebabcase PackageName }}",
+    "name": "{{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}",
     "type": "library",
     "description": "A {{ PackageName }} package.",
     "keywords": [
@@ -7,54 +7,48 @@
         "laravel",
         "{{ PackageName }}"
     ],
-    "license": "MIT",
+    "license": "{{ ComposerLicense }}",
     "require": {
-        {{- if eq PhpVersion "8.3"}}
-        "php": ">=8.3",
-        {{- else if eq PhpVersion "8.2"}}
-        "php": ">=8.2",
-        {{- else}}
-        "php": ">=8.4",
-        {{- end}}
-        "illuminate/support": "^11.0"
-        {{- if AddAssertLib}},
-        "webmozart/assert": "^1.10"
-        {{- end}}
+        "php": "^{{ PhpVersion }}",
+        "illuminate/support": "^12.0"
+        {{- if AddAssertLib }},
+        "webmozart/assert": "^2.0"
+        {{- end }}
     },
     "require-dev": {
         "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-        "ilyes512/code-style": "^2.0",
+        "specsnl/code-style": "^5.0.1",
         "larastan/larastan": "^3.1",
         "laravel/tinker": "^2.9",
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "^9.1",
+        "orchestra/testbench": "^10.0",
         "overtrue/phplint": "^9.3",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-mockery": "^2.0",
         "phpstan/phpstan-strict-rules": "^2.0",
-        {{- if AddAssertLib}}
+        {{- if AddAssertLib }}
         "phpstan/phpstan-webmozart-assert": "^2.0",
-        {{- end}}
-        "phpunit/phpunit": "^11.1",
+        {{- end }}
+        "phpunit/phpunit": "^13.0",
         "shipmonk/phpstan-rules": "^4.0"
-        {{- if AddSnapshotLib}},
+        {{- if AddSnapshotLib }},
         "spatie/phpunit-snapshot-assertions": "^5.1"
-        {{- end}}
+        {{- end }}
     },
     "autoload": {
         "psr-4": {
-            "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\": "src"
+            "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\Tests\\": "tests"
+            "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\Tests\\": "tests"
         }
     },
     "scripts": {
         "post-autoload-dump": "[ $COMPOSER_DEV_MODE -eq 0 ] || testbench optimize:clear",
         "checkall": [
-            "composer validate",
+            "composer validate --strict",
             "@lint",
             "@checkstyle",
             "@checktype",
@@ -63,19 +57,19 @@
         "lint": "XDEBUG_MODE=off phplint --exclude=vendor .",
         "test": [
             "Composer\\Config::disableProcessTimeout",
-            "XDEBUG_MODE=off phpunit -d --without-creating-snapshots"
+            "XDEBUG_MODE=off {{- if AddSnapshotLib }} CREATE_SNAPSHOTS=false {{- end }} phpunit"
         ],
         "test-report": [
             "Composer\\Config::disableProcessTimeout",
-            "XDEBUG_MODE=off php -dpcov.enabled=1 -dpcov.directory=. vendor/bin/phpunit {{- if AddSnapshotLib}} -d --without-creating-snapshots{{end}} --coverage-text --coverage-html coverage/html"
+            "XDEBUG_MODE=off {{- if AddSnapshotLib }} CREATE_SNAPSHOTS=false {{- end }} php -dpcov.enabled=1 -dpcov.directory=. vendor/bin/phpunit --coverage-text --show-uncovered-for-coverage-text --coverage-html coverage/html"
         ],
         "checkstyle": "XDEBUG_MODE=off phpcs -n",
         "fixstyle": "XDEBUG_MODE=off phpcbf -n",
         "checktype": "XDEBUG_MODE=off phpstan analyse --memory-limit=-1 -v",
         "update-type-baseline": "XDEBUG_MODE=off phpstan --generate-baseline"
-        {{- if AddSnapshotLib}},
-        "update-test-snapshots": "XDEBUG_MODE=off vendor/bin/phpunit -d --update-snapshots"
-        {{- end}}
+        {{- if AddSnapshotLib }},
+        "update-test-snapshots": "XDEBUG_MODE=off UPDATE_SNAPSHOTS=true phpunit"
+        {{- end }}
     },
     "extra": {
         "branch-alias": {
@@ -83,7 +77,7 @@
         },
         "laravel": {
             "providers": [
-                "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\{{ camelcase (snakecase PackageName) }}ServiceProvider"
+                "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\{{ toPascalCase PackageName }}ServiceProvider"
             ]
         }
     },
@@ -105,8 +99,8 @@
         "fixstyle": "Fix code style using php_codesniffer",
         "checktype": "Check code type using PHPStan",
         "update-type-baseline": "Update PHPStan baseline"
-        {{- if AddSnapshotLib}},
+        {{- if AddSnapshotLib }},
         "update-test-snapshots": "Update PHPUnit snapshots"
-        {{- end}}
+        {{- end }}
     }
 }

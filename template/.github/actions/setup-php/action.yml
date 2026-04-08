@@ -16,7 +16,7 @@ runs:
 
     - name: Restore Composer cache
       id: composer-cache
-      uses: actions/cache/restore@v4.2.0
+      uses: actions/cache/restore@v5
       with:
         path: |
           {{`${{ steps.composer-cache-dir.outputs.dir }}`}}
@@ -24,15 +24,9 @@ runs:
         key: {{`${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}`}}
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@2.32.0
+      uses: shivammathur/setup-php@2
       with:
-      {{- if eq PhpVersion "8.3"}}
-        php-version: "8.3"
-      {{- else if eq PhpVersion "8.2"}}
-        php-version: "8.2"
-      {{- else}}
-        php-version: "8.4"
-      {{- end}}
+        php-version: "{{ PhpVersion }}"
         coverage: {{`${{ inputs.coverage }}`}}
 
     - name: Install dependencies
