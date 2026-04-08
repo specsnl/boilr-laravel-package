@@ -13,5 +13,5 @@
     <file>config</file>
     <file>tests</file>
 
-    <rule ref="Ilyes512CodingStandard"/>
+    <rule ref="SpecsCodingStandard"/>
 </ruleset>
