@@ -10,9 +10,9 @@
     "license": "{{ComposerLicense}}",
     "require": {
         "php": "^{{ PhpVersion }}",
-        "illuminate/support": "^11.0"
+        "illuminate/support": "^12.0"
         {{- if AddAssertLib}},
-        "webmozart/assert": "^1.10"
+        "webmozart/assert": "^2.0"
         {{- end}}
     },
     "require-dev": {
@@ -21,7 +21,7 @@
         "larastan/larastan": "^3.1",
         "laravel/tinker": "^2.9",
         "mockery/mockery": "^1.6",
-        "orchestra/testbench": "^9.1",
+        "orchestra/testbench": "^10.0",
         "overtrue/phplint": "^9.3",
         "phpstan/extension-installer": "^1.4",
         "phpstan/phpstan-mockery": "^2.0",
@@ -29,7 +29,7 @@
         {{- if AddAssertLib}}
         "phpstan/phpstan-webmozart-assert": "^2.0",
         {{- end}}
-        "phpunit/phpunit": "^11.1",
+        "phpunit/phpunit": "^13.0",
         "shipmonk/phpstan-rules": "^4.0"
         {{- if AddSnapshotLib}},
         "spatie/phpunit-snapshot-assertions": "^5.1"
