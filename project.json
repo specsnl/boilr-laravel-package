@@ -4,5 +4,6 @@
     "Author": "Specsnl Team",
     "AddAssertLib": false,
     "AddSnapshotLib": false,
-    "PhpVersion": ["8.5", "8.4", "8.3"]
+    "PhpVersion": ["8.5", "8.4", "8.3"],
+    "ComposerLicense": ["MIT", "proprietary"]
 }

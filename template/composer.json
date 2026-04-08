@@ -7,7 +7,7 @@
         "laravel",
         "{{ PackageName }}"
     ],
-    "license": "MIT",
+    "license": "{{ComposerLicense}}",
     "require": {
         "php": "^{{ PhpVersion }}",
         "illuminate/support": "^11.0"
