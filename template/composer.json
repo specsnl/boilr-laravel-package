@@ -9,13 +9,7 @@
     ],
     "license": "MIT",
     "require": {
-        {{- if eq PhpVersion "8.3"}}
-        "php": ">=8.3",
-        {{- else if eq PhpVersion "8.2"}}
-        "php": ">=8.2",
-        {{- else}}
-        "php": ">=8.4",
-        {{- end}}
+        "php": "^{{ PhpVersion }}",
         "illuminate/support": "^11.0"
         {{- if AddAssertLib}},
         "webmozart/assert": "^1.10"
