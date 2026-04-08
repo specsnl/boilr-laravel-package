@@ -1,5 +1,5 @@
 {
-    "PackageName": "Foobar",
+    "PackageName": "laravel-package-name",
     "Vendor": "specsnl",
     "Author": "Specsnl Team",
     "AddAssertLib": false,

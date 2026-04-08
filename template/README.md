@@ -1,4 +1,4 @@
-# {{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}
+# {{ toLower Vendor }}/{{ toKebabCase PackageName }}
 
 A {{ PackageName }} package.
 
@@ -7,7 +7,7 @@ A {{ PackageName }} package.
 You can install the package via composer:
 
 ```bash
-composer require {{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}
+composer require {{ toLower Vendor }}/{{ toKebabCase PackageName }}
 ```
 
 ### Publish the config file
@@ -18,6 +18,9 @@ Run the following command to publish the config file:
 php artisan vendor:publish --tag="{{ toKebabCase PackageName }}-config"
 ```
 
+{{- if eq ComposerLicense "MIT" }}
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE) for more information.
+{{- end }}
