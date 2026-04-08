@@ -1,5 +1,5 @@
 {
-    "name": "{{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}",
+    "name": "{{ toLower Vendor }}/{{ toKebabCase PackageName }}",
     "type": "library",
     "description": "A {{ PackageName }} package.",
     "keywords": [
