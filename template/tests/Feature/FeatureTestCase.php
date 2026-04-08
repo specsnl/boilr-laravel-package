@@ -8,25 +8,24 @@ use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\DateFactory;
-use {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\{{ toPascalCase PackageName }}ServiceProvider;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\TestCase as OrchestraTestbench;
-{{- if AddSnapshotLib}}
+{{- if AddSnapshotLib }}
 use Spatie\Snapshots\MatchesSnapshots;
-{{- end}}
+{{- end }}
+use {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\{{ toPascalCase PackageName }}ServiceProvider;
 
 abstract class FeatureTestCase extends OrchestraTestbench
 {
     use MockeryPHPUnitIntegration;
-    {{- if AddSnapshotLib}}
+    {{- if AddSnapshotLib }}
     use MatchesSnapshots;
-    {{- end}}
+    {{- end }}
 
     /**
      * Get package providers.
      *
      * @param Application $app
-     *
      * @return list<class-string>
      */
     protected function getPackageProviders($app): array
@@ -70,7 +69,7 @@ abstract class FeatureTestCase extends OrchestraTestbench
         DateFactory::use(CarbonImmutable::class);
     }
 
-    {{- if AddSnapshotLib}}
+    {{- if AddSnapshotLib }}
 
     protected function assertSnapshotShouldBeCreated(string $snapshotFileName): void
     {
@@ -83,5 +82,5 @@ abstract class FeatureTestCase extends OrchestraTestbench
             'Make sure to inspect the created snapshot afterwards to ensure its correctness!',
         );
     }
-    {{- end}}
+    {{- end }}
 }

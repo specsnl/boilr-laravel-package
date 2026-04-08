@@ -26,7 +26,7 @@ runs:
     - name: Setup PHP
       uses: shivammathur/setup-php@2
       with:
-        php-version: "{{PhpVersion}}"
+        php-version: "{{ PhpVersion }}"
         coverage: {{`${{ inputs.coverage }}`}}
 
     - name: Install dependencies

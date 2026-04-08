@@ -39,7 +39,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@2
         with:
-          php-version: "{{PhpVersion}}"
+          php-version: "{{ PhpVersion }}"
 
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'

@@ -27,5 +27,5 @@ abstract class UnitTestCase extends PHPUnitTestCase
             'Make sure to inspect the created snapshot afterwards to ensure its correctness!',
         );
     }
-    {{- end}}
+    {{- end }}
 }
