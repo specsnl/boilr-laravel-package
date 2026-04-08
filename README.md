@@ -1,4 +1,4 @@
-# Ilyes512/boilr-laravel-package
+# specsnl/boilr-laravel-package
 
 A [Boilr](https://github.com/Ilyes512/boilr) template for PHP Laravel packages.
 
