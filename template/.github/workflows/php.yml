@@ -20,7 +20,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Get composer cache directory
         id: composer-cache-dir
@@ -28,7 +28,7 @@ jobs:
 
       - name: Cache Composer dependencies
         id: composer-cache
-        uses: actions/cache@v4.2.0
+        uses: actions/cache@v5
         with:
           path: |
             {{`${{ steps.composer-cache-dir.outputs.dir }}`}}
@@ -37,7 +37,7 @@ jobs:
           restore-keys: {{`composer-`}}
 
       - name: Setup PHP
-        uses: shivammathur/setup-php@2.32.0
+        uses: shivammathur/setup-php@2
         with:
         {{- if eq PhpVersion "8.3"}}
           php-version: "8.3"
@@ -62,7 +62,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: ./.github/actions/setup-php
@@ -79,13 +79,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: ./.github/actions/setup-php
 
       - name: Checkstyle Cache
-        uses: actions/cache@v4.2.0
+        uses: actions/cache@v5
         with:
           path: .phpcs.cache
           key: {{`phpcs-${{ github.ref_name }}`}}
@@ -103,13 +103,13 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v6
 
       - name: Setup PHP
         uses: ./.github/actions/setup-php
 
       - name: Checktype Cache
-        uses: actions/cache@v4.2.0
+        uses: actions/cache@5
         with:
           path: .phpstan.cache
           key: {{`phpstan-${{ github.ref_name }}`}}
