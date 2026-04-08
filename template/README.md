@@ -1,4 +1,4 @@
-# {{ lower Vendor }}/laravel-{{ kebabcase PackageName }}
+# {{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}
 
 A {{ PackageName }} package.
 
@@ -7,7 +7,7 @@ A {{ PackageName }} package.
 You can install the package via composer:
 
 ```bash
-composer require {{ lower Vendor }}/laravel-{{ kebabcase PackageName }}
+composer require {{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}
 ```
 
 ### Publish the config file
@@ -15,7 +15,7 @@ composer require {{ lower Vendor }}/laravel-{{ kebabcase PackageName }}
 Run the following command to publish the config file:
 
 ```bash
-php artisan vendor:publish --tag="{{ kebabcase PackageName }}-config"
+php artisan vendor:publish --tag="{{ toKebabCase PackageName }}-config"
 ```
 
 ## License

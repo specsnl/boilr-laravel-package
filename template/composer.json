@@ -1,5 +1,5 @@
 {
-    "name": "{{ lower Vendor }}/laravel-{{ kebabcase PackageName }}",
+    "name": "{{ toLower Vendor }}/laravel-{{ toKebabCase PackageName }}",
     "type": "library",
     "description": "A {{ PackageName }} package.",
     "keywords": [
@@ -37,12 +37,12 @@
     },
     "autoload": {
         "psr-4": {
-            "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\": "src"
+            "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\Tests\\": "tests"
+            "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -77,7 +77,7 @@
         },
         "laravel": {
             "providers": [
-                "{{ camelcase (snakecase Vendor) }}\\{{ camelcase (snakecase PackageName) }}\\{{ camelcase (snakecase PackageName) }}ServiceProvider"
+                "{{ toPascalCase Vendor }}\\{{ toPascalCase PackageName }}\\{{ toPascalCase PackageName }}ServiceProvider"
             ]
         }
     },

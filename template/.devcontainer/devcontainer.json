@@ -1,5 +1,5 @@
 {
-    "name": "laravel-{{ kebabcase PackageName }}",
+    "name": "laravel-{{ toKebabCase PackageName }}",
     "remoteUser": "code",
     "dockerComposeFile": ["../compose.yml"],
     "service": "php",

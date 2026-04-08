@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace {{ camelcase (snakecase Vendor) }}\{{ camelcase (snakecase PackageName) }}\Tests\Feature;
+namespace {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\Tests\Feature;
 
 use Carbon\CarbonImmutable;
 use Illuminate\Foundation\Application;
 use Illuminate\Routing\Router;
 use Illuminate\Support\DateFactory;
-use {{ camelcase (snakecase Vendor) }}\{{ camelcase (snakecase PackageName) }}\{{ camelcase (snakecase PackageName) }}ServiceProvider;
+use {{ toPascalCase Vendor }}\{{ toPascalCase PackageName }}\{{ toPascalCase PackageName }}ServiceProvider;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
 use Orchestra\Testbench\TestCase as OrchestraTestbench;
 {{- if AddSnapshotLib}}
@@ -32,7 +32,7 @@ abstract class FeatureTestCase extends OrchestraTestbench
     protected function getPackageProviders($app): array
     {
         return [
-            {{ camelcase (snakecase PackageName) }}ServiceProvider::class,
+            {{ toPascalCase PackageName }}ServiceProvider::class,
         ];
     }
 
